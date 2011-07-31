@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN" "http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="en">
+
+	<head>
+
+		<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+                <title>Maze-Solving Cellular Automata</title>
+                <script type="text/javascript" src="jquery.js"></script>
+                <script type="text/javascript" src="util.js"></script>
+                <script type="text/javascript" src="board.js"></script>
+                <script type="text/javascript" src="automata.js"></script>
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+
+	</head>
+
+	<body>
+
+                <h1>Maze-Solving CA</h1>
+
+		<a id="help-icon" href="#">?</a>
+
+              	<div id="information">	
+                        <h2>Information</h2> 
+                        <p>This page demonstrates a maze-solving cellular automata ruleset I created. It can find the most efficient solution to any maze, even ones with many complicated loop structures. It uses 8 different cell states: two to represent the start and finish, two to define the maze, and four to handle the actual solving process. Dead-ends in the maze are handled by the well-known end-filling procedure. Loops are handled in a somewhat more novel way: an expanding "slime" bounces back and forth from the start to the finish. The slower routes around loops get killed off, leaving only the fastest ones. If two routes are equally efficient, both will be included in the CA's final solution</p>
+                        <p>I decided to create this ruleset after viewing images of slime mold solving mazes. Slime mold can solve a maze if the start and finish are presented to it as two piles of food. The mold, which prefers to remain a unified system, will stretch itself between the two in the shortest way possible. Though this cellular automata system works in a different fashion, both demonstrate that simple, decentralized system can solve challenging problems.</p>
+		</div>
+
+                <div id="tmp"></div>
+
+		<div id="options">	
+
+                        <ul class="input">
+                                <li>
+                                        <strong>Edit Maze</strong>
+                                        <br />
+                                        <input type="radio" name="type" value="3" checked="true"/>
+                                        <label class="display-type">Maze</label>
+                                        <input type="radio" name="type" value="6" />
+                                        <label class="display-type">Start</label>
+                                        <input type="radio" name="type" value="7"/>
+                                        <label class="display-type">Finish</label>
+                        	</li>
+                        </ul>
+
+                        <canvas id="result" width="300" height="300"></canvas> 
+                        <br />
+                        <button id="solve">Solve</button>
+                        <button id="reset">Reset</button>
+                        <button id="clear">Clear</button>
+		</div>
+	</body>
+</html>
